@@ -1,0 +1,156 @@
+
+/* #4D2600 brown */
+/* #127D09 green */
+/* #F0ABFF pink */
+/* #4D45FF purple */
+
+/* *{
+    padding: 0;
+    margin: 0;
+}
+
+.flex-container{
+
+}
+
+.flex-side{
+    display: flex;
+    flex-direction: row;
+}
+
+#header{
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    margin: 5%;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: #4D2600;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    
+}
+
+#side{
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    margin: 5%;
+    margin-top: 5%;
+    margin-bottom: 0;
+    margin-right: 0;
+    background-color: #F0ABFF;
+    height: 500px;
+    width: 20%;
+}
+
+#content{
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    margin: 5%;
+    margin-left: 0;
+    margin-top: 5%;
+    margin-bottom: 0;
+    background-color: #F0ABFF;
+    height: 500px;
+    width: 60%;
+}
+
+.side-item{
+    border-radius: 7px;
+    width: 80%;
+    height: 10%;
+    margin: 5%;
+    padding: 5%;
+    background-color: white;
+    color: black;
+}
+
+#grad{
+    width: 10%;
+    height: 500px;
+    margin-top: 5%;
+    background-image: linear-gradient(to right, #F0ABFF,#4D45FF,#4D45FF,#4D45FF, #4D45FF, #4D45FF,#4D45FF,#F0ABFF); 
+}
+
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; } */
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.5;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Layout */
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: #f1f1f1;
+}
+
+.flex-side {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#header {
+    width: 100%;
+}
+
+#side {
+    width: 200px;
+    height: 100vh;
+    background-color: #f1f1f1;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: scroll;
+}
+
+.side-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.side-item:hover {
+    background-color: #ccc;
+}
+
+@media only screen and (max-width: 375px) {
+    * {
+          background-color: black;
+    }
+}

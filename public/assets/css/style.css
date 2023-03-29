@@ -3,6 +3,11 @@
     margin: 0;
 }
 
+#current{
+    background-color: rgb(168, 45, 160);
+    width: 80%;
+}
+
 #flex-container-head{
     background-color: rgb(108, 74, 19);
     display: flex;
@@ -11,7 +16,9 @@
     height: 20vh;
     width: 100%;    
 }
+
 #head{
+    display: flex;
     color: white;
     height: 100px;
     font-size: 10vh;
@@ -19,12 +26,154 @@
 
 #flex-container-main{
     display: flex;
-    justify-content: center;
     background-color: white;
-    height: 80%;
+    height: 8000px;
     width: 100%;
 }
 
+.side{
+    width: 100%;
+    background-color: rgb(108, 74, 19);
+    color: white;
+    font-size: 5vh;
+}
+
+#small-flex-container{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 25%;
+}
+
 #content{
-    height: 100vh;
+    height: 100%;
+    width: 100%;
+}
+
+.item{
+    height: 100px;
+    background-color: rgb(245, 107, 235);
+    margin: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+h2{
+    font-size: 60px;
+}
+
+p{
+    font-size: 40px;
+}
+
+#home-img{
+    height: 80px;
+    width: auto;
+    margin-top: 15px;
+    margin-right: 50px;
+}
+
+.link-button{
+    height: 100px;
+    background-color: rgb(245, 107, 235);
+    margin: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 300%;
+}
+
+.space{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(108, 74, 19);
+}
+
+
+
+a:link { text-decoration: none; }
+
+a:visited { text-decoration: none; }
+
+a:hover { text-decoration: none; }
+
+a:active { text-decoration: none; }
+
+/* responsive!! */
+@media only screen and (max-width: 860px) {
+    #head{
+        font-size: 3.5vh;
+        height: 40px;
+    }
+    #flex-container-head{
+        height: 70px;
+    }
+
+    .side{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 400%;
+        background-color: rgb(108, 74, 19);
+        color: white;
+    }
+
+    #flex-container-main{
+        display: inline;
+        justify-content: space-evenly;
+    }
+
+    #space{
+        height: 20px;
+        width: 100%;
+    }
+
+    .item{
+        font-size: 2vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        height: 50px;
+        background-color: rgb(245, 107, 235);
+        margin: 10px;
+        border-radius: 5px;
+    }
+
+    h2{
+        font-size: 30px;
+    }
+    
+    p{
+        font-size: 20px;
+    }
+
+    #home-img{
+        height: 50px;
+        width: auto;
+    }
+
+    .link-button{
+        height: 100px;
+        background-color: rgb(245, 107, 235);
+        margin: 20px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    #home-img{
+        height: 80px;
+        width: auto;
+        margin: -10px;
+        margin-right: 5px;
+        padding: -20px;
+    }
 }
