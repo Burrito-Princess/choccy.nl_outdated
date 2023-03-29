@@ -113,6 +113,11 @@ a:active { text-decoration: none; }
     #flex-container-head{
         height: 70px;
     }
+    .space{
+        width: 10px;
+        height: 40px;
+        background-color: rgb(108, 74, 19);
+    }
 
     .side{
         display: flex;
@@ -131,6 +136,10 @@ a:active { text-decoration: none; }
     #space{
         height: 20px;
         width: 100%;
+    }
+
+    #current{
+        width: 25%;
     }
 
     .item{
@@ -153,12 +162,13 @@ a:active { text-decoration: none; }
         font-size: 20px;
     }
 
-    #home-img{
-        height: 50px;
-        width: auto;
+    #front-content{
+        display: flex;
+        justify-content: center;
     }
 
     .link-button{
+        
         height: 100px;
         background-color: rgb(245, 107, 235);
         margin: 20px;
@@ -167,13 +177,12 @@ a:active { text-decoration: none; }
         justify-content: center;
         align-items: center;
         color: white;
+        width: 80%;
     }
 
     #home-img{
-        height: 80px;
+        height: 40px;
         width: auto;
-        margin: -10px;
-        margin-right: 5px;
-        padding: -20px;
+        margin: 0;
     }
 }
