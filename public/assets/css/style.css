@@ -24,7 +24,7 @@ body{
 
 #head{
     display: flex;
-    color: #CC5500;
+    color: #654321;
     height: 100px;
     font-size: 350%;
 }
@@ -39,7 +39,6 @@ body{
 .side{
     width: 100%;
     background-color: #D2B48C;
-    color: white;
     font-size: 175%;
 }
 
@@ -72,7 +71,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #CC5500;
+    color: #654321;
 }
 
 h2{
@@ -81,6 +80,14 @@ h2{
 
 p{
     font-size: 40px;
+}
+
+h1{
+    color: #AF5B1A;
+}
+
+h3{
+    color: #C25511;
 }
 
 #home-img{
@@ -100,6 +107,8 @@ p{
     align-items: center;
     color: white;
     width: 40%;
+    align-content: flex-end;
+
 }
 
 .space{
@@ -107,6 +116,19 @@ p{
     height: 100px;
     background-color: #D2B48C;
 }
+
+#discord-text{
+    font-size: 175%;
+}
+
+.bottom{
+    margin-bottom: 10px;
+}
+
+.center-text{
+    text-align: center;
+}
+
 
 
 
@@ -159,8 +181,10 @@ a:active { text-decoration: none; }
         width: 25%;
     }
 
+    
+
     .item{
-        font-size: 2vh;
+        font-size: 60%;
         display: flex;
         width: 25%;
         height: 50px;
