@@ -3,46 +3,51 @@
     margin: 0;
 }
 
+body{
+    height: 100%;
+}
+
 #current{
-    background-color: rgb(168, 45, 160);
+    background-color: white;
+
     width: 80%;
 }
 
 #flex-container-head{
-    background-color: rgb(108, 74, 19);
+    background-color: #D2B48C;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20vh;
+    height: 200px;
     width: 100%;    
 }
 
 #head{
     display: flex;
-    color: white;
+    color: #CC5500;
     height: 100px;
-    font-size: 10vh;
+    font-size: 350%;
 }
 
 #flex-container-main{
     display: flex;
     background-color: white;
-    height: 8000px;
+    height: 100%;
     width: 100%;
 }
 
 .side{
     width: 100%;
-    background-color: rgb(108, 74, 19);
+    background-color: #D2B48C;
     color: white;
-    font-size: 5vh;
+    font-size: 175%;
 }
 
 #small-flex-container{
     display: flex;
     flex-direction: column;
-    height: 80%;
-    width: 25%;
+    height: 100%;
+    width: 35%;
 }
 
 #content{
@@ -50,15 +55,24 @@
     width: 100%;
 }
 
+#front-content{
+    width: 100%;
+    height: 100%;
+}
+
+.flex{
+    width: 65%;
+}
+
 .item{
     height: 100px;
-    background-color: rgb(245, 107, 235);
-    margin: 20px;
+    background-color: #FFF8DC;
+    margin: 5%;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #CC5500;
 }
 
 h2{
@@ -78,20 +92,20 @@ p{
 
 .link-button{
     height: 100px;
-    background-color: rgb(245, 107, 235);
+    background-color: 	#7289da;
     margin: 20px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    width: 300%;
+    width: 40%;
 }
 
 .space{
     width: 100px;
     height: 100px;
-    background-color: rgb(108, 74, 19);
+    background-color: #D2B48C;
 }
 
 
@@ -107,31 +121,34 @@ a:active { text-decoration: none; }
 /* responsive!! */
 @media only screen and (max-width: 860px) {
     #head{
-        font-size: 3.5vh;
+        font-size: 150%;
         height: 40px;
     }
     #flex-container-head{
         height: 70px;
+        width: 100%;
     }
     .space{
         width: 10px;
         height: 40px;
-        background-color: rgb(108, 74, 19);
     }
 
     .side{
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        width: 400%;
-        background-color: rgb(108, 74, 19);
-        color: white;
+        width: 100%;
     }
 
     #flex-container-main{
         display: inline;
         justify-content: space-evenly;
     }
+
+    #small-flex-container{
+        width: 100%;
+    }
+
 
     #space{
         height: 20px;
@@ -145,11 +162,8 @@ a:active { text-decoration: none; }
     .item{
         font-size: 2vh;
         display: flex;
-        justify-content: center;
-        align-items: center;
         width: 25%;
         height: 50px;
-        background-color: rgb(245, 107, 235);
         margin: 10px;
         border-radius: 5px;
     }
@@ -163,20 +177,19 @@ a:active { text-decoration: none; }
     }
 
     #front-content{
+        height: 100%;
+    }
+
+    .flex{
         display: flex;
         justify-content: center;
     }
 
     .link-button{
-        
         height: 100px;
-        background-color: rgb(245, 107, 235);
         margin: 20px;
         border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
+
         width: 80%;
     }
 
