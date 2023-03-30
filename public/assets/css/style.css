@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: 'Comic Sans MS';
 }
 
 body{
@@ -56,7 +57,7 @@ body{
 
 #front-content{
     width: 100%;
-    height: 100%;
+    height: 800px;
 }
 
 .flex{
@@ -74,14 +75,6 @@ body{
     color: #654321;
 }
 
-h2{
-    font-size: 60px;
-}
-
-p{
-    font-size: 40px;
-}
-
 h1{
     color: #AF5B1A;
 }
@@ -90,11 +83,20 @@ h3{
     color: #C25511;
 }
 
-#home-img{
-    height: 80px;
-    width: auto;
-    margin-top: 15px;
-    margin-right: 50px;
+.space{
+    width: 100px;
+    height: 100px;
+    background-color: #D2B48C;
+}
+
+.center-text{
+    text-align: center;
+}
+
+
+/* Discord page */
+#discord-text{
+    font-size: 175%;
 }
 
 .link-button{
@@ -111,35 +113,66 @@ h3{
 
 }
 
-.space{
-    width: 100px;
-    height: 100px;
-    background-color: #D2B48C;
-}
+/* King ross Page */
 
-#discord-text{
-    font-size: 175%;
-}
-
-.bottom{
-    margin-bottom: 10px;
-}
-
-.center-text{
+.small-button{
     text-align: center;
+    height: 15%;
+    width: 20%;
+    background-color: #DDA0DD;
+    border-radius: 5px;
+    color: #654321;
+    margin: 10px;
+    display: table-cell;
+    padding: 10px;
+    vertical-align: middle;
+    
+}
+.projects{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
 }
 
-
-
-
+#small2-flex-container{
+     height: 100%;
+    width: 100%;
+}
 a:link { text-decoration: none; }
 
 a:visited { text-decoration: none; }
 
-a:hover { text-decoration: none; }
+a:hover { 
+    text-decoration: none;
+ }
 
 a:active { text-decoration: none; }
 
+
+.item :link { text-decoration: none; }
+
+.item:visited { text-decoration: none; }
+
+.item:hover { 
+    text-decoration: none;
+    background-color: #EEE4C4;
+ }
+
+ .item:active { text-decoration: none; }
+
+
+.small-button:link { text-decoration: none; }
+
+.small-button:visited { text-decoration: none; }
+
+.small-button:hover { 
+    text-decoration: none;
+    background-color: #B478B2;
+ }
+
+ .small-button:active { text-decoration: none; }
 /* responsive!! */
 @media only screen and (max-width: 860px) {
     #head{
