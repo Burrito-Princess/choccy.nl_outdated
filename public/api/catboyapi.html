@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catboys!</title>
+</head>
+<body>
+    
+    <div id="img"></div>
+    <div id="artist"></div>
+    <style>
+        #cat{
+            height: 400px;
+            width: auto;
+        }
+    </style>
+    </body>
+</html>
+
+
+    <script>
+catboys();
+setInterval(catboys, 10000);
+
+async function catboys() {
+  var obj;
+
+  const res = await fetch('https://api.catboys.com/img')
+  let cat = await res.json();
+  console.log(cat);
+  let maker = ({artist} = cat, {artist});
+  let link = ({url} = cat, {url});
+  let maker_link = ({artist_url} = cat, {artist_url});
+  console.log(maker);
+  console.log(link);
+  maker = JSON.stringify(maker);
+  maker_link = JSON.stringify(maker_link);
+  link = JSON.stringify(link);
+  
+  maker = maker.replace('{"artist":"', '');
+  maker = maker.replace('"}', '');
+  link = link.replace('{"url":', '');
+  link = link.replace('}', '');
+  link = link.replace('{"url":', '');
+  maker_link = maker_link.replace('{"artist_url":', '');
+  maker_link = maker_link.replace('}', '');
+  console.log(link);
+  console.log(maker);
+  console.log(maker_link);
+  document.getElementById("img").innerHTML = "<img id='cat' src=" + link + ">";
+  if(maker == 'unknown'){
+    document.getElementById("artist").innerHTML = "Made By: " + artist + "";
+  }else{
+    document.getElementById("artist").innerHTML = "Made By: " + "<a target='_blank' href=" + maker_link + ">" + artist + "";
+  }
+  
+}
+</script>

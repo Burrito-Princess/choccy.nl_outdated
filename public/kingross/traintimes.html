@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NS!</title>
+    
+</head>
+<body>
+    <style>
+        .border{
+            border: 2px solid black;
+            padding: 5px;
+        }
+
+    </style>
+    <h1 id="where">Delft</h1>
+    <input type="text" id="dep_station" onkeydown="dep_station()" placeholder="delft">
+
+    <table>
+        <tr>
+            <th>Catagory</th>
+            <th>Destination</th>
+            <th>Departure time</th>
+            <th>Platform</th>
+            <th>Via</th>
+        </tr>
+        <tr>
+            <th class="border" id="0_cat"></th>
+            <th class="border" id="0">No Trains</th>
+            <th class="border" id="0_time"></th>
+            <th class="border" id="0_plat"></th>
+            <th class="border" id="0_stp"></th>
+        </tr>
+        <tr>
+            <th class="border" id="1_cat"></th>
+            <th class="border" id="1">No Trains</th>
+            <th class="border" id="1_time"></th>
+            <th class="border plat" id="1_plat"></th>
+            <th class="border" id="1_stp"></th>
+        </tr>
+        <tr>
+            <th class="border" id="2_cat"></th>
+            <th class="border" id="2">No Trains</th>
+            <th class="border" id="2_time"></th>
+            <th class="border plat" id="2_plat"></th>
+            <th class="border" id="2_stp"></th>
+        </tr>
+        <tr>
+            <th class="border" id="3_cat"></th>
+            <th class="border" id="3">No Trains</th>
+            <th class="border" id="3_time"></th>
+            <th class="border plat" id="3_plat"></th>
+            <th class="border" id="3_stp"></th>
+        </tr>
+        <tr>
+            <th class="border" id="4_cat"></th>
+            <th class="border" id="4">No Trains</th>
+            <th class="border" id="4_time"></th>
+            <th class="border plat" id="4_plat"></th>
+            <th class="border" id="4_stp"></th>
+        </tr>
+        <tr>
+            <th class="border" id="5_cat"></th>
+            <th class="border" id="5">No Trains</th>
+            <th class="border" id="5_time"></th>
+            <th class="border plat" id="5_plat"></th>
+            <th class="border" id="5_stp"></th>
+        </tr>
+        <tr>
+            <th class="border" id="6_cat"></th>
+            <th class="border" id="6">No Trains</th>
+            <th class="border" id="6_time"></th>
+            <th class="border plat" id="6_plat"></th>
+            <th class="border" id="6_stp"></th>
+        </tr>
+        <tr>
+            <th class="border" id="7_cat"></th>
+            <th class="border" id="7">No Trains</th>
+            <th class="border" id="7_time"></th>
+            <th class="border plat" id="7_plat"></th>
+            <th class="border" id="7_stp"></th>
+        </tr>
+        <tr>
+            <th class="border" id="8_cat"></th>
+            <th class="border" id="8">No Trains</th>
+            <th class="border" id="8_time"></th>
+            <th class="border plat" id="8_plat"></th>
+            <th class="border" id="8_stp"></th>
+        </tr>
+        <tr>
+            <th class="border" id="9_cat"></th>
+            <th class="border" id="9">No Trains</th>
+            <th class="border" id="9_time"></th>
+            <th class="border plat" id="9_plat"></th>
+            <th class="border" id="9_stp"></th>
+        </tr>
+    </table>
+
+    <script>
+        let abb = "delft";
+
+        ns();
+        setInterval(ns, 10000);
+        async function ns(){
+        // Departure info API
+        
+        for(let i = 0; i < 10; i ++){
+            
+            var obj;
+        const res = await fetch('https://gateway.apiportal.ns.nl/reisinformatie-api/api/v2/departures?lang=english&station=' + abb + '&maxJourneys=10', {
+        method: "GET",
+        withCredentials: true,
+        headers: {
+            "Cache-Control": "no-cache",
+            "Ocp-Apim-Subscription-Key": "417f51d60804417ebfa3d624824558a5" 
+        }       
+        })
+        
+
+        let info = await res.json();
+        const departureArray = info.payload.departures;
+        // console.clear();
+        console.log(departureArray[i]);
+            //destination
+            let departure = ({direction} = departureArray[i], {direction});
+            let str_dep = JSON.stringify(departure);
+            str_dep = str_dep.replace('{"direction":"', '');
+            str_dep = str_dep.replace('"}', '');
+
+            //train catagory
+            let cat = ({trainCategory} = departureArray[i], {trainCategory});
+            let str_cat = JSON.stringify(cat);
+            
+
+            //time
+            let time = ({actualDateTime} = departureArray[i], {actualDateTime});
+            let str_time = JSON.stringify(time);
+            function removeByIndex(str,index) {
+            return str.slice(0,index) + str.slice(index+1);
+            }
+            str_time = str_time.split('T');
+            str_time = str_time[2].split('+');
+            str_time = str_time[0].replace('"}', '');
+
+            
+
+            //stations
+            let stations = ({routeStations} = departureArray[i], {routeStations});
+            const stationsArray = stations.routeStations;
+            let str_stp = stationsArray[0].mediumName;
+            for(let p = 0; p < stationsArray.length - 1; p++){
+                str_stp += "&nbsp , &nbsp&nbsp" + stationsArray[p + 1].mediumName;
+            }
+            //platform
+            let platform = ({actualTrack} = departureArray[i], {actualTrack});
+            let str_plat = JSON.stringify(platform);
+            str_plat = str_plat.replace('{"actualTrack":"', '');
+            str_plat = str_plat.replace('"}', '');
+            if( str_plat !== undefined){
+                document.getElementById(i + "_plat").style.backgroundColor = "blue";
+                document.getElementById(i + "_plat").style.color = "white";
+            }
+            //display
+            
+            document.getElementById(i).innerHTML = str_dep;
+            document.getElementById(i + "_time").innerHTML = str_time;
+            document.getElementById(i + "_plat").innerHTML = str_plat;
+            document.getElementById(i + "_stp").innerHTML = str_stp;
+            document.getElementById(i + "_cat").innerHTML = str_cat;
+
+            
+
+            
+
+        }
+        
+        
+    }
+    // Station name API
+    
+        // setInterval(dep_station, 1);
+
+
+        async function dep_station(){
+            var dep_station = document.getElementById("dep_station").value;
+            const station = await fetch('https://gateway.apiportal.ns.nl/reisinformatie-api/api/v2/stations?q='+ dep_station +'&countryCodes=nl&limit=1', {
+            method: "GET",
+            withCredentials: true,
+            headers: {
+            "Cache-Control": "no-cache",
+            "Ocp-Apim-Subscription-Key": "417f51d60804417ebfa3d624824558a5" 
+        }       
+        })
+        var name = await station.json();
+        console.log(name);
+        abb = name.payload[0].code;
+        document.getElementById("where").innerHTML = abb;
+        for(let s = 0; s < 10; s++){
+            document.getElementById(s).innerHTML = "";
+            document.getElementById(s + "_time").innerHTML = "";
+            document.getElementById(s + "_plat").innerHTML = "";
+            document.getElementById(s + "_stp").innerHTML = "";
+        }
+        
+        }
+        
+        
+  </script>
+</body>
+</html>
