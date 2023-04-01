@@ -16,8 +16,8 @@
 
     </style>
     <h1 id="where">Delft</h1>
-    <input type="text" id="dep_station" onkeydown="dep_station()" placeholder="delft">
-
+    <input type="text" id="dep_station" placeholder="delft">
+    <button onclick="dep_station()" onclick="ns()">Push Station</button>
     <table>
         <tr>
             <th>Catagory</th>
@@ -99,10 +99,26 @@
     </table>
 
     <script>
-        let abb = "delft";
+        let abb;
+
+        // function clear(){
+        //     abb = '';
+        //     str_cat = '';
+        //     str_dep = '';
+        //     str_plat = '';
+        //     str_stp = '';
+        //     str_time = '';
+        //     for(let s = 0; s < 10; s++){
+        //     document.getElementById(s).innerHTML = str_dep;
+        //     document.getElementById(s + "_time").innerHTML = str_time;
+        //     document.getElementById(s + "_plat").innerHTML = str_plat;
+        //     document.getElementById(s + "_stp").innerHTML = str_stp;
+        //     document.getElementById(s + "_cat").innerHTML = str_cat;
+        // }
+        // }
 
         ns();
-        setInterval(ns, 10000);
+        setInterval(ns, 30000);
         async function ns(){
         // Departure info API
         
@@ -132,14 +148,29 @@
             //train catagory
             let cat = ({trainCategory} = departureArray[i], {trainCategory});
             let str_cat = JSON.stringify(cat);
+            str_cat = str_cat.split('"');
+            str_cat = str_cat[3].replace('"}', '');
+            if(str_cat == "IC"){
+                document.getElementById(i + "_cat").style.backgroundColor = "yellow";
+                document.getElementById(i + "_cat").style.color = "black";
+            }else if (str_cat == "SPR"){
+                document.getElementById(i + "_cat").style.backgroundColor = "lightblue";
+                document.getElementById(i + "_cat").style.color = "black";
+            }else if (str_cat == "ST"){
+                document.getElementById(i + "_cat").style.backgroundColor = "red";
+                document.getElementById(i + "_cat").style.color = "black";
+            }else if (str_cat == "BUS"){
+                document.getElementById(i + "_cat").style.backgroundColor = "black";
+                document.getElementById(i + "_cat").style.color = "white";
+            }else if (str_cat == "ICD"){
+                document.getElementById(i + "_cat").style.backgroundColor = "orange";
+                document.getElementById(i + "_cat").style.color = "black";
+            }
             
 
             //time
             let time = ({actualDateTime} = departureArray[i], {actualDateTime});
             let str_time = JSON.stringify(time);
-            function removeByIndex(str,index) {
-            return str.slice(0,index) + str.slice(index+1);
-            }
             str_time = str_time.split('T');
             str_time = str_time[2].split('+');
             str_time = str_time[0].replace('"}', '');
@@ -169,7 +200,7 @@
             document.getElementById(i + "_plat").innerHTML = str_plat;
             document.getElementById(i + "_stp").innerHTML = str_stp;
             document.getElementById(i + "_cat").innerHTML = str_cat;
-
+            console.log(payload[0]);
             
 
             
@@ -194,7 +225,6 @@
         }       
         })
         var name = await station.json();
-        console.log(name);
         abb = name.payload[0].code;
         document.getElementById("where").innerHTML = abb;
         for(let s = 0; s < 10; s++){
@@ -202,6 +232,7 @@
             document.getElementById(s + "_time").innerHTML = "";
             document.getElementById(s + "_plat").innerHTML = "";
             document.getElementById(s + "_stp").innerHTML = "";
+            document.getElementById(s + "_cat").innerHTML = "";
         }
         
         }
