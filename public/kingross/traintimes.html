@@ -11,95 +11,121 @@
     <style>
         .border{
             border: 2px solid black;
+            border-radius: 5px;
             padding: 5px;
         }
 
     </style>
-    <h1 id="where">Delft</h1>
+    <h1 id="where"></h1>
     <input type="text" id="dep_station" placeholder="delft">
-    <button onclick="dep_station()" onclick="ns()">Push Station</button>
+    <button onclick="dep_station(), ns()">Push Station</button>
     <table>
         <tr>
             <th>Catagory</th>
             <th>Destination</th>
             <th>Departure time</th>
+            <!-- <th>Delay</th> -->
             <th>Platform</th>
             <th>Via</th>
+            <th>Messages</th>
         </tr>
         <tr>
             <th class="border" id="0_cat"></th>
-            <th class="border" id="0">No Trains</th>
+            <th class="border" id="0">No information</th>
             <th class="border" id="0_time"></th>
+            <!-- <th class="border" id="0_dly"></th> -->
             <th class="border" id="0_plat"></th>
             <th class="border" id="0_stp"></th>
+            <th class="border" id="0_mesg"></th>
         </tr>
         <tr>
             <th class="border" id="1_cat"></th>
-            <th class="border" id="1">No Trains</th>
+            <th class="border" id="1">No information</th>
             <th class="border" id="1_time"></th>
+            <!-- <th class="border" id="1_dly"></th> -->
             <th class="border plat" id="1_plat"></th>
             <th class="border" id="1_stp"></th>
+            <th class="border" id="1_mesg"></th>
         </tr>
         <tr>
             <th class="border" id="2_cat"></th>
-            <th class="border" id="2">No Trains</th>
+            <th class="border" id="2">No information</th>
             <th class="border" id="2_time"></th>
+            <!-- <th class="border" id="2_dly"></th> -->
             <th class="border plat" id="2_plat"></th>
             <th class="border" id="2_stp"></th>
+            <th class="border" id="2_mesg"></th>
         </tr>
         <tr>
             <th class="border" id="3_cat"></th>
-            <th class="border" id="3">No Trains</th>
+            <th class="border" id="3">No information</th>
             <th class="border" id="3_time"></th>
+            <!-- <th class="border" id="3_dly"></th> -->
             <th class="border plat" id="3_plat"></th>
             <th class="border" id="3_stp"></th>
+            <th class="border" id="3_mesg"></th>
         </tr>
         <tr>
             <th class="border" id="4_cat"></th>
-            <th class="border" id="4">No Trains</th>
+            <th class="border" id="4">No information</th>
             <th class="border" id="4_time"></th>
+            <!-- <th class="border" id="4_dly"></th> -->
             <th class="border plat" id="4_plat"></th>
             <th class="border" id="4_stp"></th>
+            <th class="border" id="4_mesg"></th>
         </tr>
         <tr>
             <th class="border" id="5_cat"></th>
-            <th class="border" id="5">No Trains</th>
+            <th class="border" id="5">No information</th>
             <th class="border" id="5_time"></th>
+            <!-- <th class="border" id="5_dly"></th> -->
             <th class="border plat" id="5_plat"></th>
             <th class="border" id="5_stp"></th>
+            <th class="border" id="5_mesg"></th>
         </tr>
         <tr>
             <th class="border" id="6_cat"></th>
-            <th class="border" id="6">No Trains</th>
+            <th class="border" id="6">No information</th>
             <th class="border" id="6_time"></th>
+            <!-- <th class="border" id="6_dly"></th> -->
             <th class="border plat" id="6_plat"></th>
             <th class="border" id="6_stp"></th>
+            <th class="border" id="6_mesg"></th>
         </tr>
         <tr>
             <th class="border" id="7_cat"></th>
-            <th class="border" id="7">No Trains</th>
+            <th class="border" id="7">No information</th>
             <th class="border" id="7_time"></th>
+            <!-- <th class="border" id="7_dly"></th> -->
             <th class="border plat" id="7_plat"></th>
             <th class="border" id="7_stp"></th>
+            <th class="border" id="7_mesg"></th>
         </tr>
         <tr>
             <th class="border" id="8_cat"></th>
-            <th class="border" id="8">No Trains</th>
+            <th class="border" id="8">No information</th>
             <th class="border" id="8_time"></th>
+            <!-- <th class="border" id="8_dly"></th> -->
             <th class="border plat" id="8_plat"></th>
             <th class="border" id="8_stp"></th>
+            <th class="border" id="8_mesg"></th>
         </tr>
         <tr>
             <th class="border" id="9_cat"></th>
-            <th class="border" id="9">No Trains</th>
+            <th class="border" id="9">No information</th>
             <th class="border" id="9_time"></th>
+            <!-- <th class="border" id="9_dly"></th> -->
             <th class="border plat" id="9_plat"></th>
             <th class="border" id="9_stp"></th>
+            <th class="border" id="9_mesg"></th>
         </tr>
     </table>
+    <br><br><br>
+
+
 
     <script>
-        let abb;
+        var abb;
 
         // function clear(){
         //     abb = '';
@@ -118,27 +144,26 @@
         // }
 
         ns();
-        setInterval(ns, 30000);
+        setInterval(ns, 10000);
         async function ns(){
         // Departure info API
-        
-        for(let i = 0; i < 10; i ++){
-            
-            var obj;
+        var obj;
         const res = await fetch('https://gateway.apiportal.ns.nl/reisinformatie-api/api/v2/departures?lang=english&station=' + abb + '&maxJourneys=10', {
         method: "GET",
         withCredentials: true,
         headers: {
             "Cache-Control": "no-cache",
-            "Ocp-Apim-Subscription-Key": "417f51d60804417ebfa3d624824558a5" 
+            "Ocp-Apim-Subscription-Key": "d7a893b2c2e64d2595647e24f4b59fb2" 
         }       
         })
+        var info = await res.json();
         
+        for(let i = 0; i < 10; i ++){
+            console.log("Info below here");
+            console.log(info);
+            console.log(abb);
+            var departureArray = info.payload.departures;
 
-        let info = await res.json();
-        const departureArray = info.payload.departures;
-        // console.clear();
-        console.log(departureArray[i]);
             //destination
             let departure = ({direction} = departureArray[i], {direction});
             let str_dep = JSON.stringify(departure);
@@ -165,6 +190,12 @@
             }else if (str_cat == "ICD"){
                 document.getElementById(i + "_cat").style.backgroundColor = "orange";
                 document.getElementById(i + "_cat").style.color = "black";
+            }else if (str_cat == "ICE"){
+                document.getElementById(i + "_cat").style.backgroundColor = "green";
+                document.getElementById(i + "_cat").style.color = "black";
+            }else if (str_cat == "THA"){
+                document.getElementById(i + "_cat").style.backgroundColor = "#750b0b";
+                document.getElementById(i + "_cat").style.color = "black";
             }
             
 
@@ -180,10 +211,16 @@
             //stations
             let stations = ({routeStations} = departureArray[i], {routeStations});
             const stationsArray = stations.routeStations;
-            let str_stp = stationsArray[0].mediumName;
-            for(let p = 0; p < stationsArray.length - 1; p++){
-                str_stp += "&nbsp , &nbsp&nbsp" + stationsArray[p + 1].mediumName;
+            if(stationsArray[i] == []){
+                console.log("emtpy");
+            }else{
+                console.log("bliep bloop");
+                var str_stp = stationsArray[0].mediumName;
+                for(let p = 0; p < stationsArray.length - 1; p++){
+                    str_stp += "&nbsp , &nbsp&nbsp" + stationsArray[p + 1].mediumName;
+                }
             }
+            
             //platform
             let platform = ({actualTrack} = departureArray[i], {actualTrack});
             let str_plat = JSON.stringify(platform);
@@ -193,16 +230,60 @@
                 document.getElementById(i + "_plat").style.backgroundColor = "blue";
                 document.getElementById(i + "_plat").style.color = "white";
             }
-            //display
+
+            //messages
+            let message = ({messages} = departureArray[i], {messages});
+            let str_mesg;
+            if (message.messages[0] == undefined){
+                str_mesg = "Uninterupted" ;
+            }else{
+                str_mesg = JSON.stringify(message.messages[0]); 
+                str_mesg = str_mesg.split('"');
+                str_mesg = str_mesg[3];
+            }
+
+            //cancelled
+            let cancel = ({cancelled} = departureArray[i], {cancelled});
+            let planned_time = ({plannedDateTime} = departureArray[i], {plannedDateTime});
+            // console.log(cancel);
+            if (cancel.cancelled == false){
+                document.getElementById(i + "_time").style.color = "green";
+            }else{
+                document.getElementById(i).style.backgroundColor = "red";
+            }
+            let str_ptime = JSON.stringify(planned_time);
+            str_ptime = str_ptime.split('T');
+            str_ptime = str_ptime[2].split('+');
+            str_ptime = str_ptime[0].replace('"}', '');
+            if (str_ptime === str_time){
+                
+            }else{
+                let check_time = str_time.split(':');
+                let pcheck_time = str_ptime.split(':');
+
+                // let delay = 60 - (pcheck_time[1] - check_time[1]);
+                // document.getElementById(i + "_dly").innerHTML = "+" + delay + " Min";
+                // document.getElementById(i + "_dly").style.color = "red";
+                if (check_time[1] == pcheck_time[1]){
+                    document.getElementById(i + "_time").style.color = "green";
+                }else{
+                    document.getElementById(i + "_time").style.color = "red";
+                }
+                
+            }
+            
+            
+
+
+            //display table
             
             document.getElementById(i).innerHTML = str_dep;
             document.getElementById(i + "_time").innerHTML = str_time;
             document.getElementById(i + "_plat").innerHTML = str_plat;
             document.getElementById(i + "_stp").innerHTML = str_stp;
             document.getElementById(i + "_cat").innerHTML = str_cat;
-            console.log(payload[0]);
+            document.getElementById(i + "_mesg").innerHTML = str_mesg;
             
-
             
 
         }
@@ -216,16 +297,18 @@
 
         async function dep_station(){
             var dep_station = document.getElementById("dep_station").value;
-            const station = await fetch('https://gateway.apiportal.ns.nl/reisinformatie-api/api/v2/stations?q='+ dep_station +'&countryCodes=nl&limit=1', {
+            const station = await fetch('https://gateway.apiportal.ns.nl/reisinformatie-api/api/v2/stations?q=' + dep_station + '&limit=1', {
             method: "GET",
             withCredentials: true,
             headers: {
             "Cache-Control": "no-cache",
-            "Ocp-Apim-Subscription-Key": "417f51d60804417ebfa3d624824558a5" 
+            "Ocp-Apim-Subscription-Key": "d7a893b2c2e64d2595647e24f4b59fb2" 
         }       
         })
         var name = await station.json();
+        console.log(name);
         abb = name.payload[0].code;
+        station_name = name.payload[0].mediumName;
         document.getElementById("where").innerHTML = abb;
         for(let s = 0; s < 10; s++){
             document.getElementById(s).innerHTML = "";
@@ -234,7 +317,7 @@
             document.getElementById(s + "_stp").innerHTML = "";
             document.getElementById(s + "_cat").innerHTML = "";
         }
-        
+            ns();
         }
         
         
