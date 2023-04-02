@@ -19,7 +19,7 @@
     </style>
     <h1 id="where">UT</h1>
     <input type="text" id="dep_station" placeholder="delft">
-    <button onclick="dep_station(), ns()">Push Station</button>
+    <button onclick="dep_station()">Push Station</button>
     <table>
         <tr>
             <th>Catagory</th>
@@ -201,6 +201,12 @@
             }else if (str_cat == "THA"){
                 document.getElementById(i + "_cat").style.backgroundColor = "#750b0b";
                 document.getElementById(i + "_cat").style.color = "black";
+            }else if (str_cat == "EST"){
+                document.getElementById(i + "_cat").style.backgroundColor = "#273163";
+                document.getElementById(i + "_cat").style.color = "black";
+            }else{
+                document.getElementById(i + "_cat").style.backgroundColor = "grey";
+                document.getElementById(i + "_cat").style.color = "black";
             }
             document.getElementById(i + "_cat").innerHTML = str_cat;
             
@@ -238,8 +244,13 @@
             if( str_plat !== undefined){
                 document.getElementById(i + "_plat").style.backgroundColor = "blue";
                 document.getElementById(i + "_plat").style.color = "white";
+                document.getElementById(i + "_plat").innerHTML = str_plat;
+            }else{
+                document.getElementById(i + "_plat").style.backgroundColor = "black";
+                document.getElementById(i + "_plat").style.color = "white";
+                document.getElementById(i + "_plat").innerHTML = "BUS";
             }
-            document.getElementById(i + "_plat").innerHTML = str_plat;
+            
 
             //messages
             let str_mesg = info.payload.departures[i].messages;
@@ -265,6 +276,7 @@
             }else{
                 document.getElementById(i).style.backgroundColor = "red";
                 document.getElementById(i).style.color = "white";
+                document.getElementById(i).innerHTML = "oopsie woopsie de trein is stukkie wukkie"
             }
             let str_ptime = JSON.stringify(planned_time);
             str_ptime = str_ptime.split('T');
@@ -328,6 +340,12 @@
             document.getElementById(s + "_plat").innerHTML = "";
             document.getElementById(s + "_stp").innerHTML = "";
             document.getElementById(s + "_cat").innerHTML = "";
+            document.getElementById(s + "_mesg").innerHTML = "";
+            document.getElementById(s).style.backgroundColor = "white";
+            document.getElementById(s + "_time").style.backgroundColor = "white";
+            document.getElementById(s + "_plat").style.backgroundColor = "white";
+            document.getElementById(s + "_stp").style.backgroundColor = "white";
+            document.getElementById(s + "_cat").style.backgroundColor = "white";
         }
             ns();
         }
