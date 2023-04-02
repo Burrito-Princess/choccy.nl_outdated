@@ -13,10 +13,11 @@
             border: 2px solid black;
             border-radius: 5px;
             padding: 5px;
+            height: 20px;
         }
 
     </style>
-    <h1 id="where"></h1>
+    <h1 id="where">UT</h1>
     <input type="text" id="dep_station" placeholder="delft">
     <button onclick="dep_station(), ns()">Push Station</button>
     <table>
@@ -125,7 +126,7 @@
 
 
     <script>
-        var abb;
+        var abb = "UT";
 
         // function clear(){
         //     abb = '';
@@ -162,19 +163,23 @@
             console.log("Info below here");
             console.log(info);
             console.log(abb);
+            let now = info.payload.departures[0].direction;
+            console.log(typeof(now));
             var departureArray = info.payload.departures;
 
             //destination
-            let departure = ({direction} = departureArray[i], {direction});
-            let str_dep = JSON.stringify(departure);
-            str_dep = str_dep.replace('{"direction":"', '');
-            str_dep = str_dep.replace('"}', '');
+            let str_dep = info.payload.departures[i].direction;
+            document.getElementById(i).innerHTML = str_dep;
+            // let str_dep = JSON.stringify(departure);
+            // str_dep = str_dep.replace('{"direction":"', '');
+            // str_dep = str_dep.replace('"}', '');
 
             //train catagory
-            let cat = ({trainCategory} = departureArray[i], {trainCategory});
-            let str_cat = JSON.stringify(cat);
-            str_cat = str_cat.split('"');
-            str_cat = str_cat[3].replace('"}', '');
+            let str_cat = info.payload.departures[i].product.categoryCode;
+            
+            // let str_cat = JSON.stringify(cat);
+            // str_cat = str_cat.split('"');
+            // str_cat = str_cat[3].replace('"}', '');
             if(str_cat == "IC"){
                 document.getElementById(i + "_cat").style.backgroundColor = "yellow";
                 document.getElementById(i + "_cat").style.color = "black";
@@ -197,50 +202,59 @@
                 document.getElementById(i + "_cat").style.backgroundColor = "#750b0b";
                 document.getElementById(i + "_cat").style.color = "black";
             }
+            document.getElementById(i + "_cat").innerHTML = str_cat;
             
 
             //time
-            let time = ({actualDateTime} = departureArray[i], {actualDateTime});
-            let str_time = JSON.stringify(time);
-            str_time = str_time.split('T');
-            str_time = str_time[2].split('+');
-            str_time = str_time[0].replace('"}', '');
+            let str_time = info.payload.departures[i].actualDateTime;
+            // let str_time = JSON.stringify(time);
+            // str_time = str_time.split('T');
+            str_time = str_time.slice(11, 19);
+            // str_time = str_time[0].replace('"}', '');
+            document.getElementById(i + "_time").innerHTML = str_time;
 
             
 
             //stations
-            let stations = ({routeStations} = departureArray[i], {routeStations});
-            const stationsArray = stations.routeStations;
-            if(stationsArray[i] == []){
+            // let stations = ({routeStations} = departureArray[i], {routeStations});
+            var stationsArray = info.payload.departures[i].routeStations;
+            if(stationsArray[0] == undefined){
                 console.log("emtpy");
-            }else{
+                stationsArray[0] = {mediumName: "direct"};
+            }
                 console.log("bliep bloop");
                 var str_stp = stationsArray[0].mediumName;
                 for(let p = 0; p < stationsArray.length - 1; p++){
                     str_stp += "&nbsp , &nbsp&nbsp" + stationsArray[p + 1].mediumName;
                 }
-            }
+            
+            document.getElementById(i + "_stp").innerHTML = str_stp;
             
             //platform
-            let platform = ({actualTrack} = departureArray[i], {actualTrack});
-            let str_plat = JSON.stringify(platform);
-            str_plat = str_plat.replace('{"actualTrack":"', '');
-            str_plat = str_plat.replace('"}', '');
+            let str_plat = info.payload.departures[i].actualTrack;
+            // let str_plat = JSON.stringify(platform);
+            // str_plat = str_plat.replace('{"actualTrack":"', '');
+            // str_plat = str_plat.replace('"}', '');
             if( str_plat !== undefined){
                 document.getElementById(i + "_plat").style.backgroundColor = "blue";
                 document.getElementById(i + "_plat").style.color = "white";
             }
+            document.getElementById(i + "_plat").innerHTML = str_plat;
 
             //messages
-            let message = ({messages} = departureArray[i], {messages});
-            let str_mesg;
-            if (message.messages[0] == undefined){
-                str_mesg = "Uninterupted" ;
+            let str_mesg = info.payload.departures[i].messages;
+            // let str_mesg;
+            console.log(str_mesg);
+            if (str_mesg[0] != undefined ){
+                document.getElementById(i + "_mesg").innerHTML = str_mesg[0].message;
             }else{
-                str_mesg = JSON.stringify(message.messages[0]); 
-                str_mesg = str_mesg.split('"');
-                str_mesg = str_mesg[3];
+                // str_mesg = JSON.stringify(message.messages[0]); 
+                // str_mesg = str_mesg.split('"');
+                
+                document.getElementById(i + "_mesg").innerHTML = "Uninterupeted";
             }
+            
+            
 
             //cancelled
             let cancel = ({cancelled} = departureArray[i], {cancelled});
@@ -250,6 +264,7 @@
                 document.getElementById(i + "_time").style.color = "green";
             }else{
                 document.getElementById(i).style.backgroundColor = "red";
+                document.getElementById(i).style.color = "white";
             }
             let str_ptime = JSON.stringify(planned_time);
             str_ptime = str_ptime.split('T');
@@ -271,18 +286,15 @@
                 }
                 
             }
-            
-            
-
 
             //display table
             
-            document.getElementById(i).innerHTML = str_dep;
-            document.getElementById(i + "_time").innerHTML = str_time;
-            document.getElementById(i + "_plat").innerHTML = str_plat;
-            document.getElementById(i + "_stp").innerHTML = str_stp;
-            document.getElementById(i + "_cat").innerHTML = str_cat;
-            document.getElementById(i + "_mesg").innerHTML = str_mesg;
+            
+            
+            
+            
+            
+            
             
             
 
