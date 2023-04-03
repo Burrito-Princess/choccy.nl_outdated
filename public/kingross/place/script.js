@@ -62,7 +62,7 @@ function begin(){
 };
 }
 
-let baa = 0;
+// let baa = 0;
 
 function square(){
   id = 0;
@@ -82,7 +82,8 @@ function square(){
       x++;
       y = 0;
     };
-    
+  
+
     y++;
     pos++;
   };
@@ -128,12 +129,11 @@ function change(id, array){
   
   console.log(matrix);
 
-  if(matrix[row][colomn] == 0 ){
+  if(matrix[row][colomn] == "" ){
     array[id - 1].style.backgroundColor = colour;
     
   }else{
     array[id - 1].style.backgroundColor = "";
-
   };
   matrix[row][colomn] = colour;
 };
