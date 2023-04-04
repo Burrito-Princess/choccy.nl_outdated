@@ -145,10 +145,25 @@ var abb = "UT";
             // console.log(cancel);
             if (cancel.cancelled == false){
                 document.getElementById(i + "_time").style.color = "green";
+                document.getElementById(i).style.backgroundColor = "white";
+                document.getElementById(i + "_stp").style.backgroundColor = "white";
+                document.getElementById(i + "_time").style.backgroundColor = "white";
+                document.getElementById(i + "_time").style.color = "green";
+                document.getElementById(i + "_stp").style.color = "black";
+                document.getElementById(i + "_mesg").style.color = "black";
+                document.getElementById(i + "_mesg").style.backgroundColor = "white";
+                document.getElementById(i).style.color = "black";
             }else{
                 document.getElementById(i).style.backgroundColor = "red";
+                document.getElementById(i + "_stp").style.backgroundColor = "red";
+                document.getElementById(i + "_time").style.backgroundColor = "red";
+                document.getElementById(i + "_time").style.color = "white";
+                document.getElementById(i + "_stp").style.color = "white";
+                document.getElementById(i + "_mesg").style.color = "white";
+                document.getElementById(i + "_mesg").style.backgroundColor = "red";
+                document.getElementById(i + "_plat").innerHTML = "--";
                 document.getElementById(i).style.color = "white";
-                document.getElementById(i).innerHTML = "oopsie woopsie de trein is stukkie wukkie"
+                document.getElementById(i + "_stp").innerHTML = "oopsie woopsie de trein is stukkie wukkie"
             }
             let str_ptime = JSON.stringify(planned_time);
             str_ptime = str_ptime.split('T');
@@ -214,11 +229,12 @@ var abb = "UT";
             document.getElementById(s + "_stp").innerHTML = "";
             document.getElementById(s + "_cat").innerHTML = "";
             document.getElementById(s + "_mesg").innerHTML = "";
-            document.getElementById(s).style.backgroundColor = "white";
-            document.getElementById(s + "_time").style.backgroundColor = "white";
-            document.getElementById(s + "_plat").style.backgroundColor = "white";
-            document.getElementById(s + "_stp").style.backgroundColor = "white";
-            document.getElementById(s + "_cat").style.backgroundColor = "white";
+            document.getElementById(s).style.backgroundColor = "";
+            document.getElementById(s + "_time").style.backgroundColor = "";
+            document.getElementById(s + "_plat").style.backgroundColor = "";
+            document.getElementById(s + "_stp").style.backgroundColor = "";
+            document.getElementById(s + "_cat").style.backgroundColor = "";
+            document.getElementById(s + "_mesg").style.backgroundColor = "";
         }
             ns();
         }
