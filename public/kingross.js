@@ -1,6 +1,8 @@
-let socials = 4;
+let socials = 1;
+let io = false;
 
 function social_media(){
+    if (io == false){
     let social_media = document.getElementById("social_media");
     for (let p = 0; p < 2; p++){
         let br = document.createElement("br");
@@ -18,10 +20,16 @@ function social_media(){
         social_media.appendChild(div);
         
     };
-
+    io = true
     document.getElementById("0").innerHTML = "<a href='https://www.instagram.com/choccy_dude_king_/'>Instagram</a>" //Insta
-    // document.getElementById("1").innerHTML = "boobs" //Snapchat
-    // document.getElementById("2").innerHTML = "boobs" //Tiktok
-    // document.getElementById("3").innerHTML = "boobs" //Letterbox
+    }else{ 
+        let byeid0 = document.getElementById("0");
+        let byeclass = document.getElementsByClassName("br");
+        for(let s = 0; s < byeclass.length; s++){
+            byeclass[s].remove();
+        }
+        byeid0.remove();
+        io = false;
+    }
 };
     
