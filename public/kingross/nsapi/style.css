@@ -1,0 +1,19 @@
+.border{
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    height: 20px;
+}
+/* #flex-container{
+    display: flex;
+    justify-content: center;
+} */
+#shortcut-button{
+    width: 50%;
+}
+
+.stations{
+    height: 50px;
+    width: auto;
+    padding: 5px;
+}

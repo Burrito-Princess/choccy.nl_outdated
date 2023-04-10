@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>what a drag</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <style>
+      #mydiv {
+        position: absolute;
+      }
+
+      #mydivheader {
+        cursor: move;
+        height: 100px;
+        width: 100%;
+      }
+      
+      #meter{
+        height: 100px;
+      }
+
+      meter::-webkit-meter-bar {
+        background: red;
+      }
+    </style>
+
+    <!-- DIV!!! -->
+  </head>
+  <body>
+    <!-- Draggable DIV -->
+    <div id="mydiv">
+      <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+      <div id="mydivheader">
+        <h1>Hia! I'm king Ross and this is my page on Choccy.nl!</h1>
+        <h3>here I will link you to my favourite sites!</h3>
+        <h3>And all the programming projects I'm working on</h3>
+        <meter
+          id="meter"
+          min="0"
+          max="100"
+          value="0"
+          high="70"
+        ></meter>
+      </div>
+    </div>
+    <!-- END DIV!!! -->
+    <script>
+      setInterval(value, 500);
+      let more = 0;
+      function value() {
+        more = more + 10;
+        document.getElementById("meter").value = more;
+        console.log(document.getElementById("meter").value);
+        console.log("hello");
+        if (more == 100){
+          more = 0;
+        }
+      }
+
+      dragElement(document.getElementById("mydiv"));
+
+      function dragElement(elmnt) {
+        var pos1 = 0,
+          pos2 = 0,
+          pos3 = 0,
+          pos4 = 0;
+        if (document.getElementById(elmnt.id + "header")) {
+          // if present, the header is where you move the DIV from:
+          document.getElementById(elmnt.id + "header").onmousedown =
+            dragMouseDown;
+        } else {
+          // otherwise, move the DIV from anywhere inside the DIV:
+          elmnt.onmousedown = dragMouseDown;
+        }
+
+        function dragMouseDown(e) {
+          e = e || window.event;
+          e.preventDefault();
+          // get the mouse cursor position at startup:
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          document.onmouseup = closeDragElement;
+          // call a function whenever the cursor moves:
+          document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+          e = e || window.event;
+          e.preventDefault();
+          // calculate the new cursor position:
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          // set the element's new position:
+          elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+          elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+        }
+
+        function closeDragElement() {
+          // stop moving when mouse button is released:
+          document.onmouseup = null;
+          document.onmousemove = null;
+        }
+      }
+    </script>
+  </body>
+</html>

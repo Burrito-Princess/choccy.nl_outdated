@@ -3,6 +3,7 @@ let io = false;
 
 function social_media(){
     if (io == false){
+        document.getElementById("social_media").style.height = "fit-content";
     let social_media = document.getElementById("social_media");
     for (let p = 0; p < 2; p++){
         let br = document.createElement("br");
@@ -29,6 +30,7 @@ function social_media(){
             byeclass[s].remove();
         }
         byeid0.remove();
+        document.getElementById("social_media").style.height = "80px";
         io = false;
     }
 };

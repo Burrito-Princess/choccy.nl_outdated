@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Trial</title>
+    <style>
+        #main{
+            height: 100px;
+            width: 100px;
+            color: white;
+            background-color: black;
+            border: dashed black 10px;
+        }
+        #inputs{
+            display: flex;
+            flex-direction: column;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        this is some text in the div
+    </div>
+    <br>
+    <div id="inputs">
+        Height <input id="height" type="number">
+        Width <input id="width" type="number">
+        Colour <input id="color" type="color">
+        Background Color <input id="background_color" type="color">
+        Border:
+        <form>
+            style<input type="text" id = "border_style">
+            color<input type="color" id = "border_color">
+            width<input  type="number" id = "border_width">
+            radius<input  type="number" id = "border_radius">
+        </form>
+       
+        
+    </div>
+</body>
+<script>
+    setInterval(update, 50);
+    function update(){
+        console.log("works!");
+        let height = 100;
+        let width;
+        let color;
+        let background_color;
+
+        height = document.getElementById("height").value;
+        document.getElementById("main").style.height = height + "px";
+
+        width = document.getElementById("width").value;
+        document.getElementById("main").style.width = width + "px";
+
+        color = document.getElementById("color").value;
+        document.getElementById("main").style.color = color;
+
+        // background
+        background_color = document.getElementById("background_color").value;
+        document.getElementById("main").style.backgroundColor = background_color;
+
+        // border
+        border_style = document.getElementById("border_style").value;
+        border_color = document.getElementById("border_color").value;
+        border_width = document.getElementById("border_width").value + "px";
+        border_radius = document.getElementById("border_radius").value + "px";
+        document.getElementById("main").style.border = border_style + border_color;
+        document.getElementById("main").style.borderWidth = border_width;
+        document.getElementById("main").style.borderRadius = border_radius;
+    }
+</script>
+</html>

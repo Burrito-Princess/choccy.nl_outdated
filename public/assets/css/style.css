@@ -130,10 +130,22 @@ h3{
 
 /* King ross Page */
 
+.content-text{
+    display: flex;
+    justify-content: center;
+
+}
+.content-text div h3{
+    padding-left: 50px;
+    padding-right:  50px;
+}
+
+
 .small-button{
     text-align: center;
     height: fit-content;
-    width: 20%;
+    min-height: 50px;
+    width: 150px;
     background-color: #DDA0DD;
     border-radius: 5px;
     color: #654321;
