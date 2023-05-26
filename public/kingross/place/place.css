@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    margin: 0;
+    padding: 0;
+    
+}
+
+.square {
+    margin: 0;
+    padding: 0;
+    height: 46px;
+    width: 46px;
+    border: 2px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.colour_button{
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+#white{
+    background-color:white;
+}
+
+#oran{
+    background-color:orange;
+}
+
+#mag{
+    background-color:magenta;
+}
+
+#l_blue{
+    background-color:lightblue;
+}
+
+#yellow{
+    background-color:yellow;
+}
+
+#lime{
+    background-color:lime;
+}
+
+#h_pink{
+    background-color:hotpink;
+}
+
+#grey{
+    background-color:grey;
+}
+
+#l_grey{
+    background-color:lightgrey;
+}
+
+#cyan{
+    background-color:cyan;
+}
+
+#purp{
+    background-color:purple;
+}
+
+#blue{
+    background-color:blue;
+}
+
+#brown{
+    background-color:brown;
+}
+
+#green{
+    background-color:green;
+}
+
+#red{
+    background-color:red;
+}
+
+#black{
+    background-color:black;
+}
