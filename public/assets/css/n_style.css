@@ -1,0 +1,88 @@
+*{
+    background-color: #f2f2f2;
+    margin:0;
+    padding:0;
+    font-family: Engravers MT;
+    z-index: 2;
+}
+
+h1{
+    font-size: 5vh;
+    background-color: transparent;
+    color: #e7b6d5;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    
+}
+
+#home{
+    height: 8vh;
+    width: 8vh;
+    border-radius: 50%;
+    margin-right: 20vh;
+    background-color: #f2f2f2;
+}
+
+#top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 90vw;
+    margin-top: 3vh;
+    border-radius: 10vh;
+    background-color: #543c26;
+    color: #e7b6d5;
+}
+#flex-container-head{
+    display: flex;
+    justify-content: center;
+}
+
+#back_mountain{
+    height: auto;
+    width: 90vw;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+#img{
+    height: 100%;
+    width: 100%;
+}
+
+#img div {
+    height: 100%;
+    width: 30px;
+    color: purple;
+    background-color: blue;
+}
+
+#one{
+    position: absolute;
+    left: 31.4vw;
+}
+#two{
+    position: absolute;
+    left: 40.6vw;
+}
+#three{
+    position: absolute;
+    left: 59.9vw;
+}
+#four{
+    position: absolute;
+    left: 88.6vw;
+}
+
