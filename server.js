@@ -19,7 +19,7 @@ const server = http.createServer(function(request, response) {
           break;
       break;
     case 'official-lou.nl':
-      serveStaticFile('official-lou/index.html', response);
+      serveStaticFile('public/official-lou/index.html', response);
       break;
     default:
       response.statusCode = 404;
