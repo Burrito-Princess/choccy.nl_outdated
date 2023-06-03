@@ -5,11 +5,14 @@ const path = require('path');
 
 const server = http.createServer(function(request, response) {
   const hostname = request.headers.host.split(':')[0];
-  
+  const url = request.url;
+
   switch (hostname) {
     case 'choccy.nl':
         if (url === '/assets/css/n_style.css') {
             serveStaticFile('public/assets/css/n_style.css', 'text/css', response);
+          } else if (url === '/assets/img/mountain_backl_3.svg') {
+            serveStaticFile('public/assets/img/mountain_backl_3.svg', 'image/svg+xml', response);
           } else {
             serveStaticFile('public/index.html', 'text/html', response);
           }
