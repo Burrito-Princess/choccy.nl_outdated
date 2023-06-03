@@ -8,7 +8,12 @@ const server = http.createServer(function(request, response) {
   
   switch (hostname) {
     case 'choccy.nl':
-      serveStaticFile('public/index.html', response);
+        if (url === '/assets/css/n_style.css') {
+            serveStaticFile('public/assets/css/n_style.css', 'text/css', response);
+          } else {
+            serveStaticFile('public/index.html', 'text/html', response);
+          }
+          break;
       break;
     case 'official-lou.nl':
       serveStaticFile('official-lou/index.html', response);
@@ -21,9 +26,7 @@ const server = http.createServer(function(request, response) {
   }
 });
 
-function serveStaticFile(filePath, response) {
-    const fileExtension = path.extname(filePath);
-    const contentType = getContentType(fileExtension);
+function serveStaticFile(filePath, contentType, response) {
     const file = path.join(__dirname, filePath);
   
     fs.readFile(file, function(error, content) {
@@ -41,18 +44,6 @@ function serveStaticFile(filePath, response) {
     });
   }
   
-  function getContentType(fileExtension) {
-    switch (fileExtension) {
-      case '.html':
-        return 'text/html';
-      case '.css':
-        return 'text/css';
-      case '.js':
-        return 'text/javascript';
-      default:
-        return 'text/plain';
-    }
-  }
 
 server.listen(port, () => {
     console.log("listening on " + port);
